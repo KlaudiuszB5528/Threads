@@ -2,6 +2,7 @@
 
 import { MongooseError } from "mongoose";
 import { revalidatePath } from "next/cache";
+import { undefined } from "zod";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
@@ -89,8 +90,7 @@ export async function fetchThreadById(id: string) {
             },
           },
         ],
-      })
-      .exec();
+      });
     return thread;
   } catch (error) {
     const err = error as MongooseError;
@@ -122,5 +122,19 @@ export async function addCommentToThread(
   } catch (error) {
     const err = error as MongooseError;
     throw new Error(`Failed to add comment to thread: ${err.message}`);
+  }
+}
+
+export async function fetchUserThreads(userId: string) {
+  try {
+    connectToDB();
+    const threads = await Thread.find({
+      author: await User.findOne({ id: userId }),
+      parentId: { $in: [null, undefined] },
+    });
+    return threads;
+  } catch (error) {
+    const err = error as MongooseError;
+    throw new Error(`Failed to fetch user threads: ${err.message}`);
   }
 }

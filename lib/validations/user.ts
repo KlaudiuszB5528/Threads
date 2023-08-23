@@ -9,5 +9,5 @@ export const UserValidation = z.object({
     })
     .max(30),
   username: z.string().min(2, { message: "Provide a username" }).max(30),
-  bio: z.string().min(1, { message: "Provide a short info" }).max(30),
+  bio: z.string().min(1, { message: "Provide a short info" }).max(120),
 });

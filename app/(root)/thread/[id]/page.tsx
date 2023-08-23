@@ -41,7 +41,7 @@ async function Page({ params }: Props) {
           currentUserId={JSON.stringify(userInfo._id)}
         />
       </div>
-      <div className="mt-10 ">
+      <div className="mt-10">
         {thread.children.map((item) => (
           <ThreadCard
             key={item._id}
