@@ -1,3 +1,6 @@
+# NOTE
+I'm trying to keep the Mongo DB up but it's possible demo page won't work due to longer inactivity
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
